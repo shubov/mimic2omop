@@ -12,8 +12,8 @@
 	},
 	// Some config for Git
 	"remoteEnv": {
-		"GIT_NAME": "Christopher Gundler",
-		"GIT_EMAIL": "c.gundler@uke.de"
+		"GIT_NAME": "Mike Shubov",
+		"GIT_EMAIL": "38743245+shubov@users.noreply.github.com"
 	},
 	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global user.email \"${GIT_EMAIL}\" && git config --global user.name \"${GIT_NAME}\"",
 	"customizations": {
