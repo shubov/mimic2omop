@@ -19,7 +19,7 @@ config_default = {
         "@variable_1": "No project replacement by default",
         "@variable_2": "No dataset replacement by default",
     },
-    "escaping_chars": {'"': '\\"', "`": "\\`"},  # don't replace in windows OS
+    "escaping_chars": {'"': '\\"', "`": "\\`"},  # don't replace backticks in windows OS
 }
 
 # ----------------------------------------------------
