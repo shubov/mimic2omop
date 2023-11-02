@@ -1,0 +1,52 @@
+// Use this file with a recent version of VS Code.
+{
+	"name": "Python 3",
+	"build": {
+		"dockerfile": "../Dockerfile",
+		"context": "..",
+		"args": {
+			// Select your PyTorch version from https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes
+			"PYTORCH_VERSION": "22.06-py3",
+			"INSTALL_VSCODE": "1"
+		}
+	},
+	// Some config for Git
+	"remoteEnv": {
+		"GIT_NAME": "Christopher Gundler",
+		"GIT_EMAIL": "c.gundler@uke.de"
+	},
+	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global user.email \"${GIT_EMAIL}\" && git config --global user.name \"${GIT_NAME}\"",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"flake8.args": [
+					"--config",
+					"${containerWorkspaceFolder}/.flake8"
+				],
+				"pylint.args": [
+					"--rcfile=${containerWorkspaceFolder}/.pylintrc"
+				],
+				"editor.defaultFormatter": "ms-python.black-formatter",
+				"editor.formatOnSave": true
+			},
+			"extensions": [
+				"ms-python.python",
+				"visualstudioexptteam.vscodeintellicode",
+				"ms-toolsai.jupyter",
+				"ms-python.flake8",
+				"ms-python.pylint",
+				"ms-python.black-formatter",
+				"kevinrose.vsc-python-indent"
+			]
+		}
+	},
+	// We must instruct Docker to use the GPUs
+	"runArgs": [
+		"--gpus",
+		"all"
+	],
+	// Use the following to include extern files from the Nextcloud
+	"mounts": [
+		// "source=/nextcloud/data,target=/data,type=bind,consistency=cached"
+	]
+}
