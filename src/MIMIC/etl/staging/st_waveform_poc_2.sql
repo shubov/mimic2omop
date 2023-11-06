@@ -111,12 +111,12 @@ CREATE OR REPLACE TABLE `@etl_project`.@etl_dataset.src_waveform_mx
 
 INSERT INTO `@etl_project`.@etl_dataset.src_waveform_header
 SELECT
-    subj.short_reference_id             AS reference_id,
+    CAST(subj.short_reference_id AS STRING)             AS reference_id,
     subj.long_reference_id              AS raw_files_path,
     subj.case_id                        AS case_id,
     subj.subject_id                     AS subject_id,
-    CAST(src.start_datetime AS DATETIME)    AS start_datetime,
-    CAST(src.end_datetime AS DATETIME)      AS end_datetime,
+    TIMESTAMP_SECONDS(src.start_datetime)    AS start_datetime,
+    TIMESTAMP_SECONDS(src.end_datetime)      AS end_datetime,
     --
     'wf_header'                         AS load_table_id,
     0                                   AS load_row_id,
@@ -130,8 +130,8 @@ INNER JOIN
     (
         SELECT 
             case_id, 
-            MIN(date_time) AS start_datetime,
-            MAX(date_time) AS end_datetime 
+            MIN(`time`) AS start_datetime,
+            MAX(`time`) AS end_datetime 
         FROM `@wf_project`.@wf_dataset.wf_details
         GROUP BY case_id
     ) src

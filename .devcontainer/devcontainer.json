@@ -47,6 +47,6 @@
 	],
 	// Use the following to include extern files from the Nextcloud
 	"mounts": [
-		// "source=/nextcloud/data,target=/data,type=bind,consistency=cached"
+		"source=/nextcloud/data,target=/data,type=bind,consistency=cached"
 	]
 }

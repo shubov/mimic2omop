@@ -3,28 +3,27 @@
 
     "variables": 
     {
-        "@source_project":   "physionet-data",
+        "@source_project":   "booming-edge-403620",
         "@core_dataset":     "mimiciv_hosp",
         "@hosp_dataset":     "mimiciv_hosp",
         "@icu_dataset":      "mimiciv_icu",
 
-        "@voc_project": "odysseus-mimic-dev",
-        "@voc_dataset": "vocab_schema",
+        "@voc_project": "booming-edge-403620",
+        "@voc_dataset": "vocab_2023_01_23_work22",
 
-        "@wf_project": "odysseus-mimic-dev",
+        "@wf_project": "booming-edge-403620",
         "@wf_dataset": "waveform_source_poc",
 
-        "@etl_project": "odysseus-mimic-dev",
-        "@etl_dataset": "mimiciv_full_cdm_*",
+        "@etl_project": "booming-edge-403620",
+        "@etl_dataset": "mimiciv_full_cdm",
 
-        "@metrics_project": "odysseus-mimic-dev",
-        "@metrics_dataset": "mimiciv_full_metrics_*",
+        "@metrics_project": "booming-edge-403620",
+        "@metrics_dataset": "mimiciv_full_metrics",
 
-        "@atlas_project": "odysseus-mimic-dev",
-        "@atlas_dataset": "mimiciv_full_current_cdm_*",
+        "@atlas_project": "booming-edge-403620",
+        "@atlas_dataset": "mimiciv_full_current_cdm",
 
-        "@waveforms_csv_path":  "gs://bucket..."
-
+        "@waveforms_csv_path":  "gs://shubov-athena/waveforms/files/mimic4wdb/0.1.0/waves"
     },
 
     "workflows":

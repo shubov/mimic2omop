@@ -176,7 +176,7 @@ CREATE OR REPLACE TABLE `@etl_project`.@etl_dataset.src_drgcodes AS
 SELECT
     hadm_id                             AS hadm_id,
     subject_id                          AS subject_id,
-    drg_code                            AS drg_code,
+    CAST(drg_code AS STRING)            AS drg_code, -- Cast drg_code to STRING
     description                         AS description,
     --
     'drgcodes'                       AS load_table_id,
@@ -184,7 +184,7 @@ SELECT
     TO_JSON_STRING(STRUCT(
         subject_id AS subject_id,
         hadm_id AS hadm_id,
-        COALESCE(drg_code, '') AS drg_code
+        COALESCE(CAST(drg_code AS STRING), '') AS drg_code -- Cast drg_code to STRING
     ))                                  AS trace_id -- this set of fields is not unique.
 FROM
     `@source_project`.@hosp_dataset.drgcodes
@@ -357,26 +357,26 @@ FROM
     d_micro
 ;
 
--- -------------------------------------------------------------------
--- src_pharmacy
--- -------------------------------------------------------------------
+-- -- -------------------------------------------------------------------
+-- -- src_pharmacy
+-- -- -------------------------------------------------------------------
 
-CREATE OR REPLACE TABLE `@etl_project`.@etl_dataset.src_pharmacy AS
-SELECT
-    pharmacy_id                         AS pharmacy_id,
-    medication                          AS medication,
-    -- hadm_id                             AS hadm_id,
-    -- subject_id                          AS subject_id,
-    -- starttime                           AS starttime,
-    -- stoptime                            AS stoptime,
-    -- route                               AS route,
-    --
-    'pharmacy'                          AS load_table_id,
-    FARM_FINGERPRINT(GENERATE_UUID())   AS load_row_id,
-    TO_JSON_STRING(STRUCT(
-        pharmacy_id AS pharmacy_id
-    ))                                  AS trace_id
-FROM
-    `@source_project`.@hosp_dataset.pharmacy
-;
+-- CREATE OR REPLACE TABLE `@etl_project`.@etl_dataset.src_pharmacy AS
+-- SELECT
+--     pharmacy_id                         AS pharmacy_id,
+--     medication                          AS medication,
+--     -- hadm_id                             AS hadm_id,
+--     -- subject_id                          AS subject_id,
+--     -- starttime                           AS starttime,
+--     -- stoptime                            AS stoptime,
+--     -- route                               AS route,
+--     --
+--     'pharmacy'                          AS load_table_id,
+--     FARM_FINGERPRINT(GENERATE_UUID())   AS load_row_id,
+--     TO_JSON_STRING(STRUCT(
+--         pharmacy_id AS pharmacy_id
+--     ))                                  AS trace_id
+-- FROM
+--     `@source_project`.@hosp_dataset.pharmacy
+-- ;
 
