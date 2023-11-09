@@ -60,7 +60,7 @@ SELECT
     COALESCE(src.target_concept_id, 0)          AS specimen_concept_id,
     32856                                       AS specimen_type_concept_id, -- OMOP4976929 Lab
     CAST(src.start_datetime AS DATE)            AS specimen_date,
-    src.start_datetime                          AS specimen_datetime,
+    DATETIME(src.start_datetime)                          AS specimen_datetime,
     CAST(NULL AS FLOAT64)                       AS quantity,
     CAST(NULL AS INT64)                         AS unit_concept_id,
     0                                           AS anatomic_site_concept_id,

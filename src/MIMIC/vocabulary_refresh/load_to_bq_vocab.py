@@ -149,7 +149,7 @@ def load_table(table, gs_path, field_delimiter, quote, config):
     bq_table = "{dataset}.{prefix}{table}"
 
     bq_load_command = (
-        "bq --location=EU load --replace "
+        "bq --location=US load --replace "
         + " --source_format=CSV  "
         + " --allow_quoted_newlines=True "
         + " --skip_leading_rows=1 "

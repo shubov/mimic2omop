@@ -70,9 +70,9 @@ SELECT
     per.person_id                           AS person_id,
     COALESCE(lat.target_concept_id, 0)      AS visit_concept_id,
     CAST(src.start_datetime AS DATE)        AS visit_start_date,
-    src.start_datetime                      AS visit_start_datetime,
+    DATETIME(src.start_datetime)            AS visit_start_datetime,
     CAST(src.end_datetime AS DATE)          AS visit_end_date,
-    src.end_datetime                        AS visit_end_datetime,
+    DATETIME(src.end_datetime)              AS visit_end_datetime,
     32817                                   AS visit_type_concept_id,   -- EHR   Type Concept    Standard                          
     CAST(NULL AS INT64)                     AS provider_id,
     cs.care_site_id                         AS care_site_id,

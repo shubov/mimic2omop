@@ -70,14 +70,16 @@ CREATE OR REPLACE TABLE `@etl_project`.@etl_dataset.cdm_death
 INSERT INTO `@etl_project`.@etl_dataset.cdm_death
 SELECT
     per.person_id       AS person_id,
-    CAST(IF(
+    DATE(IF(
         src.deathtime <= src.dischtime, 
-            src.deathtime, src.dischtime
-    ) AS DATE)                              AS death_date,
-    IF(
+        TIMESTAMP(src.deathtime), 
+        TIMESTAMP(src.dischtime)
+    )) AS death_date,
+    DATETIME(IF(
         src.deathtime <= src.dischtime, 
-            src.deathtime, src.dischtime
-    )                                       AS death_datetime,
+        TIMESTAMP(src.deathtime), 
+        TIMESTAMP(src.dischtime)
+    ))                                      AS death_datetime,
     src.type_concept_id                     AS death_type_concept_id,
     0                                       AS cause_concept_id,
     CAST(NULL AS STRING)                    AS cause_source_value,
