@@ -344,8 +344,8 @@ SELECT
     drug_concept_id                     AS drug_concept_id,
     unit_concept_id                     AS unit_concept_id,
     dose_value                          AS dose_value,
-    MIN(drug_exposure_start_date)       AS dose_era_start_date,
-    drug_era_end_date                   AS dose_era_end_date,
+    DATE(MIN(drug_exposure_start_date))       AS dose_era_start_date,
+    DATE(drug_era_end_date)                   AS dose_era_end_date,
     'dose_era.drug_exposure'            AS unit_id,
     CAST(NULL AS STRING)                AS load_table_id,
     CAST(NULL AS INT64)                 AS load_row_id

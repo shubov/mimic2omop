@@ -57,9 +57,9 @@ SELECT
     per.person_id                               AS person_id,
     src.target_concept_id                       AS device_concept_id,
     CAST(src.start_datetime AS DATE)            AS device_exposure_start_date,
-    src.start_datetime                          AS device_exposure_start_datetime,
+    DATETIME(src.start_datetime)                          AS device_exposure_start_datetime,
     CAST(src.end_datetime AS DATE)              AS device_exposure_end_date,
-    src.end_datetime                            AS device_exposure_end_datetime,
+    DATETIME(src.end_datetime)                          AS device_exposure_end_datetime,
     src.type_concept_id                         AS device_type_concept_id,
     CAST(NULL AS STRING)                        AS unique_device_id,
     CAST(
@@ -95,9 +95,9 @@ SELECT
     per.person_id                               AS person_id,
     src.target_concept_id                       AS device_concept_id,
     CAST(src.start_datetime AS DATE)            AS device_exposure_start_date,
-    src.start_datetime                          AS device_exposure_start_datetime,
+    DATETIME(src.start_datetime)                          AS device_exposure_start_datetime,
     CAST(src.start_datetime AS DATE)            AS device_exposure_end_date,
-    src.start_datetime                          AS device_exposure_end_datetime,
+    DATETIME(src.start_datetime)                          AS device_exposure_end_datetime,
     src.type_concept_id                         AS device_type_concept_id,
     CAST(NULL AS STRING)                        AS unique_device_id,
     CAST(

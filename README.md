@@ -32,7 +32,7 @@ paste this code in the script file
 #!/bin/bash
 
 # Set your Google Cloud project and dataset
-PROJECT_ID="your-project-id"
+PROJECT_ID="booming-edge-403620"
 DATASET="mimiciv_hosp"
 
 # Loop through all CSV files in the current directory
