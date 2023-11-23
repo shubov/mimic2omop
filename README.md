@@ -1,4 +1,7 @@
-# Notes
+# MIMIC mapping to OMOP
+
+## Data Quality Checks
+![Alt text](dqd.png)
 
 ## Google Cloud SDK
 ```bash
@@ -61,3 +64,11 @@ https://physionet.org/content/mimic4wdb/0.1.0/waves/#files-panel
 wget -r -N -c -np https://physionet.org/files/mimic4wdb/0.1.0/ > wget.log 2>&1 &
 gsutil cp physionet.org/* gs://shubov-athena/waveforms
 ```
+
+
+
+
+## Move Results to Google Cloud Bucket
+bq ls -n 0 booming-edge-403620:mimiciv_full_current_cdm
+Person
+bq extract --destination_format=CSV booming-edge-403620:mimiciv_full_current_cdm.person gs://shubov_mimic-iv/atlas/person/person_*.csv
