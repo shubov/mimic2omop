@@ -66,9 +66,9 @@ gsutil cp physionet.org/* gs://shubov-athena/waveforms
 ```
 
 
-
-
 ## Move Results to Google Cloud Bucket
-bq ls -n 0 booming-edge-403620:mimiciv_full_current_cdm
-Person
-bq extract --destination_format=CSV booming-edge-403620:mimiciv_full_current_cdm.person gs://shubov_mimic-iv/atlas/person/person_*.csv
+bq ls booming-edge-403620:mimiciv_full_current_cdm
+
+python extract-bq-to-bucket.py
+
+gsutil -m cp -r gs://shubov_mimic-iv/* /data/mimic-iv-2.2/shubov_thesis/OMOP
