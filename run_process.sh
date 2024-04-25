@@ -21,8 +21,3 @@ python3 scripts/run_workflow.py -e conf/full.etlconf -c conf/workflow_etl.conf &
 python3 scripts/run_workflow.py -e conf/full.etlconf -c conf/workflow_ut.conf && \
 python3 scripts/run_workflow.py -e conf/full.etlconf -c conf/workflow_metrics.conf && \
 python3 scripts/run_workflow.py -e conf/full.etlconf -c conf/workflow_unload.conf
-
-# More commands can be added here following the same pattern.
-
-# Remember to navigate back to the root directory or any specific directory as needed.
-
