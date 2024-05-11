@@ -38,16 +38,16 @@ paste this code in the script file
 ```bash
 #!/bin/bash
 
-# Set your Google Cloud project and dataset
+# set Google Cloud project and dataset
 PROJECT_ID="booming-edge-403620"
 DATASET="mimiciv_hosp"
 
-# Loop through all CSV files in the current directory
+# loop through all CSV files in the current directory
 for file in *.csv.gz; do
-  # Extract the table name from the filename (assuming filenames are table names)
+  # extract the table name from the filename
   table_name=$(basename "$file" .csv.gz)
 
-  # Create the table in BigQuery and upload the data
+  # create the table in BigQuery and upload the data
   bq load --autodetect --source_format=CSV "${PROJECT_ID}:${DATASET}.${table_name}" "$file"
 done
 ```
