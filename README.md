@@ -1,4 +1,8 @@
 # MIMIC mapping to OMOP
+This repository is built using a dockerized template repo for accessing UKE GPU servers. 
+
+- **src/** contains the source code of the project
+- **run_process.sh** contains the shell script for running the ETL
 
 ## Data Quality Checks
 ![Alt text](dqd.png)
